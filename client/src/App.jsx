@@ -1,16 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Home from './pages/Home'
-import Sidebar from './components/Sidebar'
+import Login from './pages/Login'
+import Main from './pages/Main'
 
 export default function App() {
     return (
-        <div className="flex">
+        <div>
             <Router>
-                <Sidebar />
                 <Switch>
-                    <Route path='/home'>
-                        <Home />
+                    <Route path='/login'>
+                        <Login />
+                    </Route>
+                    <Route path='/'>
+                        <Main />
                     </Route>
                 </Switch>
             </Router>
