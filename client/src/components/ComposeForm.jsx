@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import S3FileUpload from 'react-s3';
 import ComposeFormRolesCard from './ComposeFormRolesCard'
 const userRoles = ['StakeHolder', 'Finance', 'Kepala Divisi']
 
@@ -13,8 +14,19 @@ export default function ComposeForm() {
         console.log(approvalList)
     }
 
+    const config = {
+        bucketName: 'ioform-bucket',
+        region: 'us-east-1',
+        accessKeyId: 'ASIAUFDKK5ASCTOMVJE4',
+        secretAccessKey: '/zG5oycddKwJmLSApK4dxL7UQzfbv5kZxJ9gNL53'
+    }
+
     const handleFileUpload = (e) => {
         console.log(e.target.files[0], '<<<')
+        S3FileUpload
+            .uploadFile(e.target.files[0], config)
+            .then(data => console.log(data))
+            .catch(err => console.error(err))
     }
 
     return (
