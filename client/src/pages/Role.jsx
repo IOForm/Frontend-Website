@@ -2,25 +2,25 @@ import React from 'react'
 
 export default function Role() {
     return (
-        <div className="overflow-auto">
+        <div className="">
             <div className="flex">
                 <div className="bg-gray-800 p-3 text-gray-200 rounded-lg">
                     <p className="font-semibold text-2xl">Role</p>
                 </div>
             </div>
             <div className="flex justify-evenly items-center">
-                <div class="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
-                    <div class="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
+                <div className="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
+                    <div className="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
                         <span>Stakeholder</span>
                     </div>
                 </div>
-                <div class="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
-                    <div class="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
+                <div className="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
+                    <div className="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
                         <span>Finance</span>
                     </div>
                 </div>
-                <div class="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
-                    <div class="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
+                <div className="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
+                    <div className="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
                         <span>Head Devisi</span>
                     </div>
                 </div>
