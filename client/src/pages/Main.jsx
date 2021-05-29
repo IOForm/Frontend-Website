@@ -12,7 +12,7 @@ export default function Main() {
         <div className="flex h-screen bg-gray-800">
                 <Sidebar />
                 <div className="flex-1 px-12 py-6">
-                    <div className="bg-blue-100 h-full w-full rounded-3xl p-10">
+                    <div className="bg-blue-100 h-full w-full rounded-3xl p-10 overflow-auto">
                         <Switch>
                             <Route exact path='/'>
                                 <Dashboard />
