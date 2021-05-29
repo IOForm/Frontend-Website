@@ -24,6 +24,7 @@ export default function ComposeForm() {
             approvalList 
         }
         console.log(submitFormData)
+        sendPushNotification('ExponentPushToken[8ouZI2DmDe3PBM67v2_ViY]')
     }
 
     const toBase64 = file => new Promise((resolve, reject) => {
@@ -36,10 +37,31 @@ export default function ComposeForm() {
     const handleFileUpload = async (e) => {
         const result = await toBase64(e.target.files[0]).catch(e => Error(e));
         if(result instanceof Error) {
-           console.log('Error: ', result.message);
-           return;
+            console.log('Error: ', result.message);
+            return;
         }
         setApprovalDocs(result)
+    }
+
+    const sendPushNotification = async(expoPushToken) => {
+        const message = {
+            to: expoPushToken,
+            sound: 'default',
+            title: 'halo',
+            body: 'bismillah',
+            data: { someData: 'goes here' }
+        }
+    
+        await fetch('https://exp.host/--/api/v2/push/send', {
+            mode: 'no-cors',  
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Accept-encoding': 'gzip, deflate',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(message),
+        })
     }
 
     return (
