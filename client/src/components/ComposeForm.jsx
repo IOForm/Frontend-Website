@@ -1,18 +1,11 @@
 import React, { useState } from 'react'
 import ComposeFormRolesCard from './ComposeFormRolesCard'
+import { useDispatch } from 'react-redux'
+import { addForm } from '../store/actions/formAction'
 
-const userRoles = [{
-    id: 1,
-    name: 'StakeHolder'
-}, {
-    id: 2,
-    name: 'Finance'
-}, {
-    id: 3,
-    name: 'Kepala Divisi'
-}]
+export default function ComposeForm({ roleList }) {
+    const dispatch = useDispatch()
 
-export default function ComposeForm() {
     const [companyTitle, setCompanyTitle] = useState('')
     const [approvalDocs, setApprovalDocs] = useState('')
     const [approvalList, setApprovalList] = useState([])
@@ -23,7 +16,29 @@ export default function ComposeForm() {
             formDetail: approvalDocs,
             approvalList 
         }
-        console.log(submitFormData)
+        dispatch(addForm(submitFormData))
+        sendPushNotification('ExponentPushToken[8ouZI2DmDe3PBM67v2_ViY]')
+    }
+
+    const sendPushNotification = async(expoPushToken) => {
+        const message = {
+            to: expoPushToken,
+            sound: 'default',
+            title: 'halo',
+            body: 'bismillah',
+            data: { someData: 'goes here' }
+        }
+
+        await fetch('https://exp.host/--/api/v2/push/send', {
+            mode: 'no-cors',  
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Accept-encoding': 'gzip, deflate',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(message),
+        })
     }
 
     const toBase64 = file => new Promise((resolve, reject) => {
@@ -73,7 +88,7 @@ export default function ComposeForm() {
                                 <p className="text-2xl font-bold text-gray-700">Approvals :</p>
                             </div>
                             {
-                                userRoles.map(item => <ComposeFormRolesCard key={item.id} item={item} approvalList={approvalList} setApprovalList={setApprovalList} />)
+                                roleList.map(item => <ComposeFormRolesCard key={item.id} item={item} approvalList={approvalList} setApprovalList={setApprovalList} />)
                             }
                         </div>
                     </div>

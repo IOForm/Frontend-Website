@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchRole } from '../store/actions/roleAction'
 
 export default function Role() {
+    const dispatch = useDispatch()
+
+    const roleData = useSelector(state => state.role.data)
+    const roleLoading = useSelector(state => state.role.loading)
+    const roleError = useSelector(state => state.role.error)
+
+    useEffect(() => {
+        dispatch(fetchRole())
+    }, [])
+
     return (
         <div className="">
             <div className="flex">
@@ -8,7 +20,7 @@ export default function Role() {
                     <p className="font-semibold text-2xl">Role</p>
                 </div>
             </div>
-            <div className="flex justify-evenly items-center">
+            <div className="flex space-x-3 mt-5">
                 <div className="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
                     <div className="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
                         <span>Stakeholder</span>
@@ -26,7 +38,7 @@ export default function Role() {
                 </div>
             </div>
             <div className="relative w-1/2 m-8">
-                <div className="border-r-2 border-gray-500 absolute h-full top-0" style={{left: '19px'}}></div>
+                <div className="border-r-4 border-gray-500 absolute h-full top-0" style={{left: '19px'}}></div>
                 <ul className="list-none m-0 p-0">
                     <li className="mb-2">
                         <div className="flex items-center mb-20">
