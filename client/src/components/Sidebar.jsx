@@ -13,7 +13,7 @@ export default function Sidebar() {
     return (
         <div className="h-full space-y-5 justify-between">
             <div className="justify-center flex p-5">
-                <img src={Logo} className="rounded-full w-20" />
+                <img src={Logo} className="rounded-full w-20" alt='ioForm' />
             </div>
             <div className="space-y-5">
                 <div onClick={() => navigation.push('/')} className={

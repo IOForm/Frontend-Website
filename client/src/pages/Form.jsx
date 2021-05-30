@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ComposeForm from '../components/ComposeForm'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchRole } from '../store/actions/roleAction'
 
 export default function Form() {
+    const dispatch = useDispatch()
+
+    const roleData = useSelector(state => state.role.data)
+    const roleLoading = useSelector(state => state.role.loading)
+    const roleError = useSelector(state => state.role.error)
+
+    useEffect(() => {
+        dispatch(fetchRole())
+    }, [])
+
     return (
         <div>
             <div className="flex">
@@ -10,7 +22,7 @@ export default function Form() {
                 </div>
             </div>
             <div className="mt-12">
-                <ComposeForm />
+                <ComposeForm roleList={roleData} />
             </div>
         </div>
     )
