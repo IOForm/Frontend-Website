@@ -32,6 +32,9 @@ export default function History() {
                                 <span className="text-gray-300">Company</span>
                             </th>
                             <th className="px-16 py-2">
+                                <span className="text-gray-300">Detail</span>
+                            </th>
+                            <th className="px-16 py-2">
                                 <span className="text-gray-300">Attachment</span>
                             </th>
                             <th className="px-16 py-2">

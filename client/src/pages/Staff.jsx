@@ -14,8 +14,6 @@ export default function Staff() {
         dispatch(fetchStaff())
     }, [])
 
-    console.log(staffData, '<<<');
-
     return (
         <div>
             <div className="flex">

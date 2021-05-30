@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import Dashboard from '../pages/Dashboard'
 import Form from '../pages/Form'
@@ -8,6 +8,14 @@ import Role from '../pages/Role'
 import History from '../pages/History'
 
 export default function Main() {
+    const history = useHistory()
+
+    useEffect(() => {
+        if(!localStorage.access_token) {
+        history.push('/login')
+        }
+    }, [])
+
     return (
         <div className="flex h-screen bg-gray-800">
                 <Sidebar />
