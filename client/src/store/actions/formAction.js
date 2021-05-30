@@ -16,6 +16,7 @@ export function fetchForms() {
 
 export function addForm(data) {
     return function(dispatch) {
+        console.log(data, '<<<')
         axios.post('/forms', data)
             .then(() => console.log('posted'))
             .catch((err) => console.log(err))

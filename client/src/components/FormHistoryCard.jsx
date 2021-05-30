@@ -10,7 +10,10 @@ export default function FormHistoryCard({ formInfo }) {
                 <span>{formInfo.clientName}</span>
             </td>
             <td className="px-16 text-center py-2">
-                <a href={formInfo.formDetail}>Preview</a>
+                <p>{formInfo.formDetail}</p>
+            </td>
+            <td className="px-16 text-center py-2">
+                <a href={formInfo.fileAttachment}>Preview</a>
             </td>
             <td className="px-16 text-center py-2">
                 <span>{formInfo.createdAt.split('T')[0]}</span>

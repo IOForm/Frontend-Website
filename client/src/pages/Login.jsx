@@ -1,7 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router'
 import BannerLogo from '../assets/img/banner.svg'
+import axios from '../store/actions/axios'
 
 function Login() {
+  const history = useHistory()
+
+  useEffect(() => {
+      if(localStorage.access_token) {
+      history.push('/')
+      }
+  }, [])
+
   const [isLoginPage, setIsLoginPage] = useState(true)
   const [inputLogin, setInputLogin] = useState({
     email: '',
@@ -29,7 +39,12 @@ function Login() {
 
   function submitFormLogin(e) {
     e.preventDefault()
-
+    axios.post('/login', inputLogin)
+      .then(({ data }) => {
+        localStorage.setItem('access_token', data.access_token)
+        history.push('/')
+      })
+      .catch(err => console.log(err))
   }
 
   function submitFormRegister(e) {

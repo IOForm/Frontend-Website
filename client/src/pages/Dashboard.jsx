@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchForms } from '../store/actions/formAction'
+import { fetchDashboard } from '../store/actions/dashboardAction'
 
 export default function Home() {
     const dispatch = useDispatch()
 
-    const formData = useSelector(state => state.form.data)
-    const formLoading = useSelector(state => state.form.loading)
-    const formError = useSelector(state => state.form.error)
+    const dashboardData = useSelector(state => state.dashboard.data)
+    const dashboardLoading = useSelector(state => state.dashboard.loading)
+    const dashboardError = useSelector(state => state.dashboard.error)
     
     useEffect(() => {
-        dispatch(fetchForms())
+        dispatch(fetchDashboard())
     }, [])
 
     return (
@@ -21,6 +21,7 @@ export default function Home() {
                 </div>
             </div>
             <div>
+                {/* <p>{JSON.stringify(dashboardData)}</p> */}
                 {/* <div className="flex p-5 space-x-3">
                     <div className="bg-gray-50 p-5 rounded-lg">
                         <p>2 Active Forms</p>

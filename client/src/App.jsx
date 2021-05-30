@@ -12,7 +12,7 @@ export default function App() {
                         <Login />
                     </Route>
                     <Route path='/'>
-                        {!localStorage.getItem('access_token') ? <Redirect to="/Login" /> : <Main />}
+                        <Main />
                     </Route>
                 </Switch>
             </Router>

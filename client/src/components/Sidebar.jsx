@@ -6,7 +6,7 @@ export default function Sidebar() {
     const location = useLocation()
 
     const logout = () => {
-        console.log('Clear localStorage')
+        localStorage.clear()
         navigation.push('/login')
     }
 
