@@ -5,7 +5,6 @@ import FormHistoryCard from '../components/FormHistoryCard'
 
 export default function History() {
     const dispatch = useDispatch()
-
     const formData = useSelector(state => state.form.data)
     const formLoading = useSelector(state => state.form.loading)
     const formError = useSelector(state => state.form.error)
@@ -47,7 +46,7 @@ export default function History() {
                     </thead>
                     <tbody className="bg-gray-200">
                         {
-                            formData.map(item => <FormHistoryCard key={item.id} formInfo={item  } />)
+                            formData.map(item => <FormHistoryCard key={item.id} formInfo={item} />)
                         }
                     </tbody>
                 </table>

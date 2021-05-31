@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Document, Page, pdfjs } from 'react-pdf'
+import { Document, Page, pdfjs,  } from 'react-pdf'
 
 export default function ModalPdf({ setModal, formInfo }) {
     const [numPages, setNumPages] = useState(null);

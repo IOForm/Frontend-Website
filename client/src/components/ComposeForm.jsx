@@ -65,8 +65,8 @@ export default function ComposeForm({ roleList }) {
     const handleFileUpload = async (e) => {
         const result = await toBase64(e.target.files[0]).catch(e => Error(e));
         if(result instanceof Error) {
-           console.log('Error: ', result.message);
-           return;
+            console.log('Error: ', result.message);
+            return;
         }
         setApprovalDocs(result)
     }
@@ -100,7 +100,18 @@ export default function ComposeForm({ roleList }) {
                                 )
                             }
                         </div>
-                        <div className="">
+                        <div className="w-full flex justify-between items-start">
+                            <div className="mt-6 mb-12 space-y-4">
+                                <div>
+                                    <p className="text-2xl font-bold text-gray-700">Approvals :</p>
+                                </div>
+                                <div className="flex space-x-3">
+                                    {
+                                        roleList.map(item => <ComposeFormRolesCard key={item.id} item={item} approvalList={approvalList} setApprovalList={setApprovalList} />)
+                                    }
+                                </div>
+                            </div>
+                            <div className="mt-7">
                                 {
                                     approvalDocs && (
                                         <button onClick={(e) => openModal(e)} className="bg-gray-800 p-1 px-3 flex rounded-lg focus:outline-none">
@@ -117,15 +128,6 @@ export default function ComposeForm({ roleList }) {
                                     modal && (
                                         <ModalPdf setModal={setModal} formInfo={dataForPdf}/>
                                     )
-                                }
-                            </div>
-                        <div className="mt-6 mb-12 space-y-4">
-                            <div>
-                                <p className="text-2xl font-bold text-gray-700">Approvals :</p>
-                            </div>
-                            <div className="flex space-x-3">
-                                {
-                                    roleList.map(item => <ComposeFormRolesCard key={item.id} item={item} approvalList={approvalList} setApprovalList={setApprovalList} />)
                                 }
                             </div>
                         </div>
