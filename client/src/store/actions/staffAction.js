@@ -7,7 +7,11 @@ export const SET_STAFF_ERROR = 'staff/setError'
 export function fetchStaff() {
     return function(dispatch) {
         dispatch(setStaffLoading(true))
-        axios('/admin/staff')
+        axios('/admin/staff', {
+            headers: {
+                access_token: localStorage.access_token
+            }
+        })
             .then(({ data }) => dispatch(setStaffData(data)))
             .catch(err => dispatch(setStaffError(err)))
             .finally(() => dispatch(setStaffLoading(false)))
