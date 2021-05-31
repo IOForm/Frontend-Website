@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function FormHistoryCard({ formInfo }) {
+    console.log(formInfo, '<<<')
     return (
         <tr className="bg-white border-4 border-gray-200">
             <td className="px-4 py-2 text-left">
@@ -21,11 +22,11 @@ export default function FormHistoryCard({ formInfo }) {
             <td className="px-8 py-2 flex justify-center items-center">
                 {
                     formInfo.formComplete ? (
-                        <div className="bg-green-100 px-4 py-2 rounded-lg uppercase">
-                            <p className="text-green-500 font-bold">Approved</p>
+                        <div className="bg-green-100 px-4 py-2 rounded-lg uppercase w-full text-center">
+                            <p className="text-green-500 font-bold">Completed</p>
                         </div>
                         ) : (
-                        <div className="bg-yellow-100 px-4 py-2 rounded-lg uppercase">
+                        <div className="bg-yellow-100 px-4 py-2 rounded-lg uppercase w-full text-center">
                             <p className="text-yellow-500 font-bold">Pending</p>
                         </div>
                         )
