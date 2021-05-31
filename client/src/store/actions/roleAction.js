@@ -7,7 +7,11 @@ export const SET_ROLE_ERROR = 'role/setError'
 export function fetchRole() {
     return function(dispatch) {
         dispatch(setRoleLoading(true))
-        axios('/role')
+        axios('/role', {
+            headers: {
+                access_token: localStorage.access_token
+            }
+        })
             .then(({ data }) => dispatch(setRoleData(data)))
             .catch(err => dispatch(setRoleError(err)))
             .finally(() => dispatch(setRoleLoading(false)))

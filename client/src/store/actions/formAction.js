@@ -7,7 +7,11 @@ export const SET_FORMS_ERROR = 'forms/setError'
 export function fetchForms() {
     return function(dispatch) {
         dispatch(setFormLoading(true))
-        axios('/forms')
+        axios('/forms', {
+            headers: {
+                access_token: localStorage.access_token
+            }
+        })
             .then(({ data }) => dispatch(setFormData(data)))
             .catch(err => dispatch(setFormError(err)))
             .finally(() => dispatch(setFormLoading(false)))
@@ -16,8 +20,11 @@ export function fetchForms() {
 
 export function addForm(data) {
     return function(dispatch) {
-        console.log(data, '<<<')
-        axios.post('/forms', data)
+        axios.post('/forms', data, {
+            headers: {
+                access_token: localStorage.access_token
+            }
+        })
             .then(() => console.log('posted'))
             .catch((err) => console.log(err))
     }

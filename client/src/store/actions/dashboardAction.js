@@ -7,7 +7,11 @@ export const SET_DASHBOARD_ERROR = 'dashboard/setError'
 export function fetchDashboard() {
     return function(dispatch) {
         dispatch(setDashboardLoading(true))
-        axios('/admin/dashboard')
+        axios('/admin/dashboard', {
+            headers: {
+                access_token: localStorage.access_token
+            }
+        })
             .then(({ data }) => dispatch(setDashboardData(data)))
             .catch(err => dispatch(setDashboardError(err)))
             .finally(() => dispatch(setDashboardLoading(false)))
