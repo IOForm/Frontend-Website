@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchRole } from '../store/actions/roleAction'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import LoadingPlaceholder from '../components/LoadingPlaceholder'
 
 const initialRoles = [
     {
@@ -29,6 +30,10 @@ export default function Role() {
         dispatch(fetchRole())
     }, [])
 
+    if (roleLoading) {
+        return <LoadingPlaceholder />
+    }
+
     function handleOnDragEnd(result) {
         if (!result.destination) return;
     
@@ -48,11 +53,11 @@ export default function Role() {
             </div>
             <div className="flex space-x-3 mt-10 mb-10">
                 {
-                    roles.map(role => {
+                    roleData.map(role => {
                         return (
                             <div className="flex flex-col overflow-hidden transition duration-500 ease-in-out transform bg-white rounded-lg hover:scale-105">
                                 <div className="px-6 pt-4 pb-2 mb-2 text-xl font-bold">
-                                    <span>{role.title}</span>
+                                    <span>{role.name}</span>
                                 </div>
                             </div>
                         )

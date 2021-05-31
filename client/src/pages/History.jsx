@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchForms } from '../store/actions/formAction'
 import FormHistoryCard from '../components/FormHistoryCard'
-
+import LoadingPlaceholder from '../components/LoadingPlaceholder'
 
 export default function History() {
     const dispatch = useDispatch()
@@ -14,6 +14,10 @@ export default function History() {
     useEffect(() => {
         dispatch(fetchForms())
     }, [])
+
+    if (formLoading) {
+        return <LoadingPlaceholder />
+    }
 
     return (
         <div>
