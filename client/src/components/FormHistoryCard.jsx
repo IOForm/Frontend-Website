@@ -7,10 +7,10 @@ export default function FormHistoryCard({ formInfo }) {
             <td className="px-4 py-2 text-left">
                 <span>{ formInfo.id }</span>
             </td>
-            <td className="px-16 text-center py-2">
+            <td className="px-16 text-left py-2">
                 <span>{formInfo.clientName}</span>
             </td>
-            <td className="px-16 text-center py-2">
+            <td className="px-16 text-left py-2">
                 <p>{formInfo.formDetail}</p>
             </td>
             <td className="px-16 text-center py-2">

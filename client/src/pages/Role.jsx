@@ -40,7 +40,7 @@ export default function Role() {
     }
 
     return (
-        <div className="">
+        <div className="space-y-8">
             <div className="flex">
                 <div className="bg-gray-800 p-3 text-gray-200 rounded-lg">
                     <p className="font-semibold text-2xl">Role</p>
@@ -72,7 +72,7 @@ export default function Role() {
                                             {(provided) => (
                                                 <li className="mb-2" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                     <div className="flex items-center mb-20">
-                                                        <div className="bg-gray-800 rounded-full z-10 h-10 w-12 h-12 flex justify-center items-center">
+                                                        <div className="bg-gray-800 rounded-full z-10 w-12 h-12 flex justify-center items-center">
                                                             <h3 className="text-xl font-bold text-white text-center">
                                                                 {idx+1}
                                                             </h3>
@@ -87,11 +87,16 @@ export default function Role() {
                                     )
                                 })
                             }
-                            {provided.placeholder}
+                        {provided.placeholder}
                         </ul>
                     )}
                     </Droppable>
                 </DragDropContext>
+            </div>
+            <div className="flex">
+                <div className="bg-gray-800 p-3 text-gray-200 rounded-lg cursor-pointer">
+                    <p className="font-semibold text-xl">Save Changes</p>
+                </div>
             </div>
         </div>
     )
