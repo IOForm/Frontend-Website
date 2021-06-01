@@ -66,6 +66,14 @@ export default function ComposeForm({ roleList }) {
         }) 
     }
 
+    function successAlert() {
+        Swal.fire(
+            'Welcome!',
+            'IOForm dashboard',
+            'success'
+        )
+    }
+
     const sendPushNotification = async(expoPushToken) => {
         const message = {
             to: expoPushToken,
