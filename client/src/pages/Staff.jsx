@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchStaff } from '../store/actions/staffAction'
 import StaffCard from '../components/StaffCard'
+import LoadingPlaceholder from '../components/LoadingPlaceholder'
 
 export default function Staff() {
     const dispatch = useDispatch()
@@ -13,6 +14,10 @@ export default function Staff() {
     useEffect(() => {
         dispatch(fetchStaff())
     }, [])
+
+    if (staffLoading) {
+        return <LoadingPlaceholder />
+    }
 
     return (
         <div>

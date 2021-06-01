@@ -1,13 +1,24 @@
 import React from 'react'
 import Logo from '../assets/logo.png'
 import { useHistory, useLocation } from 'react-router-dom'
+import Swal from 'sweetalert2'
+
 export default function Sidebar() {
     const navigation = useHistory()
     const location = useLocation()
 
     const logout = () => {
         localStorage.clear()
+        successAlert('See you!')
         navigation.push('/login')
+    }
+
+    function successAlert(msg) {
+        Swal.fire(
+            msg,
+            '',
+            'success'
+        )
     }
 
     return (

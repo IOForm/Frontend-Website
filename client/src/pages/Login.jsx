@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router'
 import BannerLogo from '../assets/img/banner.svg'
 import axios from '../store/actions/axios'
+import Swal from 'sweetalert2'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function Login() {
   const history = useHistory()
@@ -39,12 +42,38 @@ function Login() {
 
   function submitFormLogin(e) {
     e.preventDefault()
-    axios.post('/login', inputLogin)
-      .then(({ data }) => {
-        localStorage.setItem('access_token', data.access_token)
-        history.push('/')
-      })
-      .catch(err => console.log(err))
+    let errorMsg = []
+    for(let key in inputLogin) {
+      if(key === 'email' && !inputLogin.email) {
+        errorMsg.push('⚠️ email must be required!')
+      } else if (key === 'password' && !inputLogin.password) {
+        errorMsg.push('⚠️ password must be required!')
+      }
+    }
+
+    if(errorMsg.length) {
+      errorMsg.map((msg) => errorAlert(msg))
+    } else {
+      axios.post('/login', inputLogin)
+        .then(({ data }) => {
+          localStorage.setItem('access_token', data.access_token)
+          successAlert()
+          history.push('/')
+        })
+        .catch(({ response }) => {
+          if(response.data.message === 'fail login') {
+            errorAlert('⚠️ email or password wrong!')
+          }
+        })
+    }
+  }
+
+  function successAlert() {
+    Swal.fire(
+      'Welcome!',
+      'IOForm dashboard',
+      'success'
+    )
   }
 
   function submitFormRegister(e) {
@@ -52,8 +81,31 @@ function Login() {
 
   }
 
+  function errorAlert(msg) {
+    toast.error(msg, {
+      position: "top-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    }) 
+  }
+
   return (
     <>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="h-screen w-full flex justify-center items-center bg-gray-800">
         <div className="w-full h-screen bg-white sm:w-11/12 sm:h-5/6 flex items-center shadow-2xl sm:rounded-3xl">
           <div className="w-2/5 sm:w-3/5 h-full flex-row justify-center items-center">
@@ -100,7 +152,7 @@ function Login() {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                   Password
                 </label>
-                <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******"
+                <input className="shadow appearance-none rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******"
                   name="password"
                   onChange={isLoginPage ? handleChangeLogin: handleChangeRegister}
                 />
