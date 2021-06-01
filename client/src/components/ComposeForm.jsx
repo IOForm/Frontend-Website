@@ -5,6 +5,7 @@ import { addForm } from '../store/actions/formAction'
 import ModalPdf from './ModalPdf'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Swal from 'sweetalert2'
 
 export default function ComposeForm({ roleList }) {
     const dispatch = useDispatch()
