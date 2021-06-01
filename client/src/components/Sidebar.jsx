@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../assets/logo.png'
+import Logo from '../assets/img/ioform-logo-text.png'
 import { useHistory, useLocation } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
@@ -23,8 +23,8 @@ export default function Sidebar() {
 
     return (
         <div className="h-full space-y-5 justify-between">
-            <div className="justify-center flex p-5">
-                <img src={Logo} className="rounded-full w-20" alt='ioForm' />
+            <div className="justify-center flex p-5 mt-12">
+                <img src={Logo} className="w-28" alt='ioForm' />
             </div>
             <div className="space-y-5">
                 <div onClick={() => navigation.push('/')} className={

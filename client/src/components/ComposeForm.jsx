@@ -6,6 +6,13 @@ import ModalPdf from './ModalPdf'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true
+  })
 
 export default function ComposeForm({ roleList }) {
     const dispatch = useDispatch()
@@ -70,11 +77,10 @@ export default function ComposeForm({ roleList }) {
     }
 
     function successAlert() {
-        Swal.fire(
-            'Success!',
-            'Form has been created',
-            'success'
-        )
+        Toast.fire({
+            icon: 'success',
+            title: `Form Submited`
+        })
     }
 
     function clearState() {

@@ -52,7 +52,7 @@ export default function History() {
                     </thead>
                     <tbody className="bg-gray-200">
                         {
-                            formData.map(item => <FormHistoryCard key={item.id} formInfo={item  } />)
+                            formData.sort((a, b) => a.id - b.id).map(item => <FormHistoryCard key={item.id} formInfo={item  } />)
                         }
                     </tbody>
                 </table>

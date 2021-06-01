@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ComposeForm from '../components/ComposeForm'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchRole } from '../store/actions/roleAction'
+import LoadingPlaceholder from '../components/LoadingPlaceholder'
 
 export default function Form() {
     const dispatch = useDispatch()
@@ -13,6 +14,10 @@ export default function Form() {
     useEffect(() => {
         dispatch(fetchRole())
     }, [])
+
+    if (roleLoading) {
+        return <LoadingPlaceholder />
+    }
 
     return (
         <div>
