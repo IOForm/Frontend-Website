@@ -5,6 +5,7 @@ import { addForm } from '../store/actions/formAction'
 import ModalPdf from './ModalPdf'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Swal from 'sweetalert2'
 
 export default function ComposeForm({ roleList }) {
     const dispatch = useDispatch()
@@ -51,6 +52,8 @@ export default function ComposeForm({ roleList }) {
             errorMsg.map((msg) => errorAlert(msg))
         } else {
             dispatch(addForm(submitFormData))
+            successAlert()
+            clearState()
         }
     }
 
@@ -64,6 +67,21 @@ export default function ComposeForm({ roleList }) {
             draggable: true,
             progress: undefined,
         }) 
+    }
+
+    function successAlert() {
+        Swal.fire(
+            'Success!',
+            'Form has been created',
+            'success'
+        )
+    }
+
+    function clearState() {
+        setCompanyTitle('')
+        setFormDetail('')
+        setApprovalDocs('')
+        setApprovalList([])
     }
 
     const sendPushNotification = async(expoPushToken) => {
