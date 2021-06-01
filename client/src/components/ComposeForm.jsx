@@ -51,6 +51,8 @@ export default function ComposeForm({ roleList }) {
             errorMsg.map((msg) => errorAlert(msg))
         } else {
             dispatch(addForm(submitFormData))
+            successAlert()
+            clearState()
         }
     }
 
@@ -68,10 +70,17 @@ export default function ComposeForm({ roleList }) {
 
     function successAlert() {
         Swal.fire(
-            'Welcome!',
-            'IOForm dashboard',
+            'Success!',
+            'Form has been created',
             'success'
         )
+    }
+
+    function clearState() {
+        setCompanyTitle('')
+        setFormDetail('')
+        setApprovalDocs('')
+        setApprovalList([])
     }
 
     const sendPushNotification = async(expoPushToken) => {
