@@ -12,7 +12,7 @@ const Toast = Swal.mixin({
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true
-  })
+})
 
 export default function ComposeForm({ roleList }) {
     const dispatch = useDispatch()
@@ -155,15 +155,18 @@ export default function ComposeForm({ roleList }) {
                                         (
                                             <div onClick={() => setApprovalDocs(null)} className="cursor-pointer p-2 bg-green-100 hover:bg-red-100 hover:text-red-500 text-green-500 rounded-lg opacity-100">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>
                                             </div>
                                         )
                                     ) : (
                                         <label className="bg-gray-100 p-2 rounded-lg opacity-70 hover:opacity-100 transition-opacity duration-500 cursor-pointer">
-                                            <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                                            </svg>
+                                            <div className="w-44 flex justify-between items-center">
+                                                <svg className="w-8 h-8 mx-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                                </svg>
+                                                <p className="text-sm mx-1 font-bold">Upload Document</p>
+                                            </div>
                                             <input value={approvalDocs} onChange={(e) => handleFileUpload(e)} accept='.pdf' type='file' className="hidden" />
                                         </label>
                                     )

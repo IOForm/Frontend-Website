@@ -98,11 +98,11 @@ export default function Role() {
                     </Droppable>
                 </DragDropContext>
             </div>
-            <div className="flex">
+            {/* <div className="flex">
                 <div className="bg-gray-800 p-3 text-gray-200 rounded-lg cursor-pointer">
                     <p className="font-semibold text-xl">Save Changes</p>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
