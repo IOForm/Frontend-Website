@@ -17,12 +17,6 @@ const Toast = Swal.mixin({
 function Login() {
   const history = useHistory()
 
-  useEffect(() => {
-      if(localStorage.access_token) {
-      history.push('/')
-      }
-  }, [])
-
   const [isLoginPage, setIsLoginPage] = useState(true)
   const [inputLogin, setInputLogin] = useState({
     email: '',
@@ -68,7 +62,7 @@ function Login() {
           successAlert()
           history.push('/')
         })
-        .catch((response) => {
+        .catch(({response}) => {
           if(response.data.message === 'fail login') {
             errorAlert('⚠️ email or password wrong!')
           }
@@ -176,7 +170,7 @@ function Login() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                   </svg>
                   </div>
-                <button className="font-bold py-2 px-4 flex-1" type="submit" >LOGIN</button>
+                <button className="font-bold py-2 px-4 flex-1" type="submit" >{isLoginPage ? 'LOGIN' : 'REGISTER'}</button>
               </div>
               <div className="mt-3 flex">
                 <p className="text-xs">
