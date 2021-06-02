@@ -69,7 +69,7 @@ export default function Sidebar() {
                         <p className="font-semibold text-xl">Staff</p>
                     </div>
                 </div>
-                <div onClick={() => navigation.push('/role')} className={
+                {/* <div onClick={() => navigation.push('/role')} className={
                     location.pathname === "/role" ? (
                         "text-gray-100 bg-yellow-500 cursor-pointer rounded-r-2xl cursor-500 transition-colors duration-500"
                     ) : (
@@ -82,7 +82,7 @@ export default function Sidebar() {
                         </svg>
                         <p className="font-semibold text-xl">Role</p>
                     </div>
-                </div>
+                </div> */}
                 <div onClick={() => navigation.push('/history')} className={
                     location.pathname === "/history" ? (
                         "text-gray-100 bg-yellow-500 cursor-pointer rounded-r-2xl cursor-500 transition-colors duration-500"

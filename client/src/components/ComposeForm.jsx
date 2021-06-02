@@ -61,6 +61,7 @@ export default function ComposeForm({ roleList }) {
             dispatch(addForm(submitFormData))
             successAlert()
             clearState()
+            sendPushNotification()
         }
     }
 
@@ -94,8 +95,8 @@ export default function ComposeForm({ roleList }) {
         const message = {
             to: expoPushToken,
             sound: 'default',
-            title: 'halo',
-            body: 'bismillah',
+            title: 'New Approval Request',
+            body: 'You receieved new approval request',
             data: { someData: 'goes here' }
         }
 

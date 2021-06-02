@@ -68,7 +68,7 @@ function Login() {
           successAlert()
           history.push('/')
         })
-        .catch(({ response }) => {
+        .catch((response) => {
           if(response.data.message === 'fail login') {
             errorAlert('⚠️ email or password wrong!')
           }
